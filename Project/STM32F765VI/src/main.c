@@ -93,14 +93,10 @@ int main(void)
 
   /* Add your application code here
      */
-  GPIO_Initial();
 
   /* Infinite loop */
   while (1)
   {
-    HAL_GPIO_WritePin(GPIOC, GPIO_PIN_0, GPIO_PIN_RESET);
-    HAL_GPIO_WritePin(GPIOC, GPIO_PIN_1, GPIO_PIN_SET);
-    HAL_GPIO_WritePin(GPIOC, GPIO_PIN_2, GPIO_PIN_RESET);
   }
 }
 
@@ -247,24 +243,6 @@ void assert_failed(uint8_t* file, uint32_t line)
 /**
   * @}
   */ 
-void GPIO_Initial(void)
-{
-  GPIO_InitTypeDef GPIO_InitStructure;
-  
-  __HAL_RCC_GPIOC_CLK_ENABLE();
-  GPIO_InitStructure.Mode = GPIO_MODE_OUTPUT_PP;
-  GPIO_InitStructure.Pull = GPIO_PULLDOWN;
-  GPIO_InitStructure.Speed = GPIO_SPEED_FREQ_HIGH;
-  
-  GPIO_InitStructure.Pin = GPIO_PIN_0;
-  HAL_GPIO_Init(GPIOC, &GPIO_InitStructure);
-  
-  GPIO_InitStructure.Pin = GPIO_PIN_1;
-  HAL_GPIO_Init(GPIOC, &GPIO_InitStructure);
-  
-  GPIO_InitStructure.Pin = GPIO_PIN_2;
-  HAL_GPIO_Init(GPIOC, &GPIO_InitStructure);
-}
 /**
   * @}
   */ 

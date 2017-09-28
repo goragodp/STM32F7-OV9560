@@ -9,10 +9,10 @@
 #include <stdint.h>
 #include <stdlib.h>
 #include <string.h>
-#include STM32_HAL_H
+#include "Stm32f7xx_hal.h"
 #include "sccb.h"
 #include "ov9650.h"
-#include "systick.h"
+//EDITED #include "systick.h"
 #include "ov9650_regs.h"
 
 #define NUM_BR_LEVELS       7

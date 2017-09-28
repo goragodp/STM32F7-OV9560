@@ -2,31 +2,45 @@
 -std=c99
 -ferror-limit=100
 -I
-C:\Users\Goragod\Desktop\STM32F7-OV9560\Project\STM32F765VI\EWARM\..\Inc
+C:\Users\Goragod\Desktop\STM32F7-OV9560\Project\STM32F765VI\EWARM\..\inc
 -I
 C:\Users\Goragod\Desktop\STM32F7-OV9560\Project\STM32F765VI\EWARM\..\..\..\Driver\CMSIS\Include
 -I
-C:\Users\Goragod\Desktop\STM32F7-OV9560\Project\STM32F765VI\EWARM\..\..\..\Driver\STM32F7xx_HAL_Driver\Inc
--I
 C:\Users\Goragod\Desktop\STM32F7-OV9560\Project\STM32F765VI\EWARM\..\..\..\Driver\CMSIS\Device\ST\STM32F7xx\Include
 -I
-C:\Users\Goragod\Desktop\STM32F7-OV9560\Project\STM32F765VI\EWARM\..\..\..\Third Party\OV9650
+C:\Users\Goragod\Desktop\STM32F7-OV9560\Project\STM32F765VI\EWARM\..\..\..\Driver\STM32F7xx_HAL_Driver\Inc
+-I
+C:\Users\Goragod\Desktop\STM32F7-OV9560\Project\STM32F765VI\EWARM\..\..\..\Third Party\omv
+-I
+C:\Users\Goragod\Desktop\STM32F7-OV9560\Project\STM32F765VI\EWARM\..\..\..\Third Party\omv\boards\OPENMV3
+-I
+C:\Users\Goragod\Desktop\STM32F7-OV9560\Project\STM32F765VI\EWARM\..\..\..\Third Party\omv\img
+-I
+C:\Users\Goragod\Desktop\STM32F7-OV9560\Project\STM32F765VI\EWARM\..\..\..\Third Party\fatfs\include
 -I
 C:\Program Files (x86)\IAR Systems\Embedded Workbench 7.5\arm\inc
 -I
 C:\Program Files (x86)\IAR Systems\Embedded Workbench 7.5\arm\inc\c
 -I
-C:\Users\Goragod\Desktop\STM32F7-OV9560\Project\STM32F765VI\Inc
+C:\Users\Goragod\Desktop\STM32F7-OV9560\Project\STM32F765VI\inc
 -I
 C:\Users\Goragod\Desktop\STM32F7-OV9560\Driver\CMSIS\Include
 -I
-C:\Users\Goragod\Desktop\STM32F7-OV9560\Driver\STM32F7xx_HAL_Driver\Inc
--I
 C:\Users\Goragod\Desktop\STM32F7-OV9560\Driver\CMSIS\Device\ST\STM32F7xx\Include
 -I
-C:\Users\Goragod\Desktop\STM32F7-OV9560\Third Party\OV9650
+C:\Users\Goragod\Desktop\STM32F7-OV9560\Driver\STM32F7xx_HAL_Driver\Inc
+-I
+C:\Users\Goragod\Desktop\STM32F7-OV9560\Third Party\omv
+-I
+C:\Users\Goragod\Desktop\STM32F7-OV9560\Third Party\omv\boards\OPENMV3
+-I
+C:\Users\Goragod\Desktop\STM32F7-OV9560\Third Party\omv\img
+-I
+C:\Users\Goragod\Desktop\STM32F7-OV9560\Third Party\fatfs\include
 -DUSE_HAL_DRIVER=1
 -DSTM32F765xx=1
+-DARM_MATH_CM7=1
+-D__FPU_PRESENT=1
 -D__CHAR_BITS__=8
 -D__CHAR_MAX__=0xff
 -D__CHAR_MIN__=0

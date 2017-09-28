@@ -92,6 +92,8 @@
 
 /* Includes ------------------------------------------------------------------*/
 #include "stm32f7xx_hal.h"
+#include "stm32f765xx.h"
+#include "sensor.h"
 
 /** @addtogroup STM32F7xx_HAL_Driver
   * @{
@@ -120,6 +122,8 @@
 /* Private function prototypes -----------------------------------------------*/
 static void       DCMI_DMAXferCplt(DMA_HandleTypeDef *hdma);
 static void       DCMI_DMAError(DMA_HandleTypeDef *hdma);
+
+static void       DCMI_DMAConvCplt(DMA_HandleTypeDef *hdma);
 
 /* Exported functions --------------------------------------------------------*/
 
@@ -377,6 +381,96 @@ HAL_StatusTypeDef HAL_DCMI_Start_DMA(DCMI_HandleTypeDef* hdcmi, uint32_t DCMI_Mo
   return HAL_OK;
 }
 
+
+  /**
+  * @brief  DMA conversion complete callback. 
+  * @param  hdma: pointer to a DMA_HandleTypeDef structure that contains
+  *                the configuration information for the specified DMA module.
+  * @retval None
+  */
+
+static void DCMI_DMAConvCplt(DMA_HandleTypeDef *hdma)
+{
+  DCMI_HandleTypeDef* hdcmi;
+
+  hdcmi = ( DCMI_HandleTypeDef* )((DMA_HandleTypeDef* )hdma)->Parent;
+  hdcmi->State= HAL_DCMI_STATE_READY;
+
+  // Note: we don't need to adjust memory addresses because they stay the same.
+  if(hdcmi->XferCount != 0) {
+    hdcmi->XferCount--;
+  }
+
+  if((hdcmi->DMA_Handle->Instance->CR & DMA_SxCR_CT) == 0) {
+    // Current traget is M0 call user callback with M1
+    DCMI_DMAConvCpltUser(hdcmi->DMA_Handle->Instance->M1AR);
+  } else {
+    // Current traget is M1 call user callback with M0
+    DCMI_DMAConvCpltUser(hdcmi->DMA_Handle->Instance->M0AR);
+  }
+
+  if(__HAL_DCMI_GET_FLAG(hdcmi, DCMI_FLAG_FRAMERI) != RESET) {
+    /* Process Unlocked */
+    __HAL_UNLOCK(hdcmi);
+
+    /* FRAME Callback */
+    HAL_DCMI_FrameEventCallback(hdcmi);
+  }
+}
+
+HAL_StatusTypeDef HAL_DCMI_Start_DMA_MB(DCMI_HandleTypeDef* hdcmi, uint32_t DCMI_Mode, uint32_t pData, uint32_t Length, uint32_t Count)
+{  
+  /* Initialise the second memory address */
+  uint32_t SecondMemAddress = 0;
+
+  /* Check function parameters */
+  assert_param(IS_DCMI_CAPTURE_MODE(DCMI_Mode));
+
+  /* Process Locked */
+  __HAL_LOCK(hdcmi);
+
+  /* Lock the DCMI peripheral state */
+  hdcmi->State = HAL_DCMI_STATE_BUSY;
+
+  /* Check the parameters */
+  assert_param(IS_DCMI_CAPTURE_MODE(DCMI_Mode));
+
+  /* Configure the DCMI Mode */
+  hdcmi->Instance->CR &= ~(DCMI_CR_CM);
+  hdcmi->Instance->CR |=  (uint32_t)(DCMI_Mode);
+
+  /* Set the DMA memory0 conversion complete callback */
+  hdcmi->DMA_Handle->XferCpltCallback = DCMI_DMAConvCplt;
+
+  /* Set the DMA error callback */
+  hdcmi->DMA_Handle->XferErrorCallback = DCMI_DMAError;
+
+  /* DCMI_DOUBLE_BUFFER Mode */
+  /* Set the DMA memory1 conversion complete callback */
+  hdcmi->DMA_Handle->XferM1CpltCallback = DCMI_DMAConvCplt; 
+
+  /* Initialise transfer parameters */
+  hdcmi->XferCount = Count;
+  hdcmi->XferSize = Length/Count;
+  hdcmi->pBuffPtr = pData;
+    
+  /* Update DCMI counter  and transfer number*/
+  hdcmi->XferCount = (hdcmi->XferCount - 2);
+  hdcmi->XferTransferNumber = hdcmi->XferCount;
+
+  /* Update second memory address */
+  SecondMemAddress = (uint32_t)(pData + (4*hdcmi->XferSize));
+
+  /* Start DMA multi buffer transfer */
+  HAL_DMAEx_MultiBufferStart_IT(hdcmi->DMA_Handle, (uint32_t)&hdcmi->Instance->DR, (uint32_t)pData, SecondMemAddress, hdcmi->XferSize);
+  
+
+  /* Enable Capture */
+  DCMI->CR |= DCMI_CR_CAPTURE;
+
+  /* Return function status */
+  return HAL_OK;
+}
 /**
   * @brief  Disable DCMI DMA request and Disable DCMI capture  
   * @param  hdcmi: pointer to a DCMI_HandleTypeDef structure that contains
@@ -648,6 +742,10 @@ __weak void HAL_DCMI_FrameEventCallback(DCMI_HandleTypeDef *hdcmi)
    */
 }
 
+__weak void DCMI_DMAConvCpltUser(uint32_t addr)
+{
+
+}
 /**
   * @}
   */
