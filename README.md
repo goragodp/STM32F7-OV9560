@@ -1,1 +1,2 @@
-# STM32F7-OV9560
+# STM32F7-OV9650
+# Thesis for TAIST 
