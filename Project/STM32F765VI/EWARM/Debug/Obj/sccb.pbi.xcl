@@ -1,4 +1,4 @@
-"C:\Users\Goragod\Desktop\STM32F7-OV9560\Project\STM32F765VI\src\stm32f7xx_it.c"
+"C:\Users\Goragod\Desktop\STM32F7-OV9560\Third Party\OV9650\sccb.c"
 -std=c99
 -ferror-limit=100
 -I

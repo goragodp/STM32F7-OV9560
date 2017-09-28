@@ -10,6 +10,8 @@ C:\Users\Goragod\Desktop\STM32F7-OV9560\Project\STM32F765VI\EWARM\..\..\..\Drive
 -I
 C:\Users\Goragod\Desktop\STM32F7-OV9560\Project\STM32F765VI\EWARM\..\..\..\Driver\CMSIS\Device\ST\STM32F7xx\Include
 -I
+C:\Users\Goragod\Desktop\STM32F7-OV9560\Project\STM32F765VI\EWARM\..\..\..\Third Party\OV9650
+-I
 C:\Program Files (x86)\IAR Systems\Embedded Workbench 7.5\arm\inc
 -I
 C:\Program Files (x86)\IAR Systems\Embedded Workbench 7.5\arm\inc\c
@@ -21,6 +23,8 @@ C:\Users\Goragod\Desktop\STM32F7-OV9560\Driver\CMSIS\Include
 C:\Users\Goragod\Desktop\STM32F7-OV9560\Driver\STM32F7xx_HAL_Driver\Inc
 -I
 C:\Users\Goragod\Desktop\STM32F7-OV9560\Driver\CMSIS\Device\ST\STM32F7xx\Include
+-I
+C:\Users\Goragod\Desktop\STM32F7-OV9560\Third Party\OV9650
 -DUSE_HAL_DRIVER=1
 -DSTM32F765xx=1
 -D__CHAR_BITS__=8

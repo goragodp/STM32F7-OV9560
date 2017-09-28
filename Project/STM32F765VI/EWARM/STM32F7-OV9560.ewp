@@ -315,6 +315,7 @@
           <state>$PROJ_DIR$\..\..\..\Driver\CMSIS\Include</state>
           <state>$PROJ_DIR$\..\..\..\Driver\STM32F7xx_HAL_Driver\Inc</state>
           <state>$PROJ_DIR$\..\..\..\Driver\CMSIS\Device\ST\STM32F7xx\Include</state>
+          <state>$PROJ_DIR$\..\..\..\Third Party\OV9650</state>
         </option>
         <option>
           <name>CCStdIncCheck</name>
@@ -1973,6 +1974,9 @@
           <name>$PROJ_DIR$\..\..\..\Driver\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_rcc.h</name>
         </file>
         <file>
+          <name>$PROJ_DIR$\..\..\..\Driver\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_rcc_ex.h</name>
+        </file>
+        <file>
           <name>$PROJ_DIR$\..\..\..\Driver\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_usart.h</name>
         </file>
       </group>
@@ -2009,10 +2013,34 @@
           <name>$PROJ_DIR$\..\..\..\Driver\STM32F7xx_HAL_Driver\Src\stm32f7xx_hal_rcc.c</name>
         </file>
         <file>
+          <name>$PROJ_DIR$\..\..\..\Driver\STM32F7xx_HAL_Driver\Src\stm32f7xx_hal_rcc_ex.c</name>
+        </file>
+        <file>
           <name>$PROJ_DIR$\..\..\..\Driver\STM32F7xx_HAL_Driver\Src\stm32f7xx_hal_usart.c</name>
         </file>
       </group>
     </group>
+  </group>
+  <group>
+    <name>OV9650</name>
+    <file>
+      <name>$PROJ_DIR$\..\..\..\..\openmv\src\omv\boards\OPENMV3\omv_boardconfig.h</name>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\..\..\openmv\src\omv\ov9650.c</name>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\..\..\openmv\src\omv\ov9650.h</name>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\..\..\openmv\src\omv\ov9650_regs.h</name>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\..\Third Party\OV9650\sccb.c</name>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\..\Third Party\OV9650\sccb.h</name>
+    </file>
   </group>
   <group>
     <name>User</name>
