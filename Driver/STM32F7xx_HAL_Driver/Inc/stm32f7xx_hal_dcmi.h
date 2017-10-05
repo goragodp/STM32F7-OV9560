@@ -413,8 +413,8 @@ typedef struct
   * @retval The state of FLAG.
   */
 #define __HAL_DCMI_GET_FLAG(__HANDLE__, __FLAG__)\
-((((__FLAG__) & (DCMI_SR_INDEX|DCMI_MIS_INDEX)) == 0x0)? ((__HANDLE__)->Instance->RIS & (__FLAG__)) :\
- (((__FLAG__) & DCMI_SR_INDEX) == 0x0)? ((__HANDLE__)->Instance->MIS & (__FLAG__)) : ((__HANDLE__)->Instance->SR & (__FLAG__)))
+((((__FLAG__) & (DCMI_SR_INDEX|DCMI_MIS_INDEX)) == 0x0)? ((__HANDLE__)->Instance->RISR & (__FLAG__)) :\
+ (((__FLAG__) & DCMI_SR_INDEX) == 0x0)? ((__HANDLE__)->Instance->MISR & (__FLAG__)) : ((__HANDLE__)->Instance->SR & (__FLAG__)))
 
 /**
   * @brief  Clear the DCMI pending flags.
@@ -480,7 +480,7 @@ typedef struct
 /** @addtogroup DCMI_Exported_Functions DCMI Exported Functions
   * @{
   */
-
+__weak void DCMI_DMAConvCpltUser(uint32_t addr);
 /** @addtogroup DCMI_Exported_Functions_Group1 Initialization and Configuration functions
  * @{
  */
