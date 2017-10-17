@@ -2317,6 +2317,9 @@
   <group>
     <name>CMSIS</name>
     <file>
+      <name>$PROJ_DIR$\stm32f756xx_flash.icf</name>
+    </file>
+    <file>
       <name>$PROJ_DIR$\..\src\system_stm32f7xx.c</name>
     </file>
   </group>
@@ -2422,6 +2425,9 @@
       <name>$PROJ_DIR$\..\inc\stm32fxxx_hal_msp.c</name>
     </file>
   </group>
+  <file>
+    <name>$PROJ_DIR$\..\..\..\Driver\CMSIS\Device\ST\STM32F7xx\Source\Templates\iar\startup_stm32f765xx.s</name>
+  </file>
 </project>
 
 

@@ -1,3 +1,23 @@
+[Stack]
+FillEnabled=0
+OverflowWarningsEnabled=1
+WarningThreshold=90
+SpWarningsEnabled=1
+WarnLogOnly=1
+UseTrigger=1
+TriggerName=main
+LimitSize=0
+ByteLimit=50
+[StLinkDriver]
+CStepIntDis=_ 0
+LeaveTargetRunning=_ 0
+[DebugChecksum]
+Checksum=1931402127
+[CodeCoverage]
+Enabled=_ 0
+[Exceptions]
+StopOnUncaught=_ 0
+StopOnThrow=_ 0
 [InterruptLog]
 LogEnabled=0
 GraphEnabled=0
@@ -11,16 +31,10 @@ GraphEnabled=0
 ShowTimeLog=1
 SumEnabled=0
 ShowTimeSum=1
-[Stack]
-FillEnabled=0
-OverflowWarningsEnabled=1
-WarningThreshold=90
-SpWarningsEnabled=1
-WarnLogOnly=1
-UseTrigger=1
-TriggerName=main
-LimitSize=0
-ByteLimit=50
+[Disassemble mode]
+mode=0
+[Breakpoints2]
+Count=0
 [Interrupts]
 Enabled=1
 [MemConfig]
@@ -32,16 +46,9 @@ Stop=1
 [Trace1]
 Enabled=0
 ShowSource=1
-[Simulator]
-Freq=10000000
-MultiCoreRunAll=1
-[StLinkDriver]
-CStepIntDis=_ 0
-LeaveTargetRunning=_ 0
-[Disassemble mode]
-mode=0
-[Breakpoints2]
-Count=0
 [Aliases]
 Count=0
 SuppressDialog=0
+[Simulator]
+Freq=10000000
+MultiCoreRunAll=1
